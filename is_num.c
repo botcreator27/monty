@@ -10,7 +10,7 @@
 
 int is_num(char **tokens, unsigned int line_number)
 {
-	int value, i;
+	int value, i = 0;
 
 	if (tokens[1] == NULL)
 	{
@@ -18,7 +18,12 @@ int is_num(char **tokens, unsigned int line_number)
 	exit(EXIT_FAILURE);
 	}
 
-	for (i = 0; tokens[1][i] != '\0'; i++)
+	if (tokens[1][i] == '-')
+	{
+	i++;
+	}
+
+	for (; tokens[1][i] != '\0'; i++)
 	{
 	if (tokens[1][i] < '0' || tokens[1][i] > '9')
 	{

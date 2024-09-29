@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	{
 	line_num++;
 
-	if (strlen(line) == 0 ||strspn(line, " \n") == strlen(line))
+	if (strlen(line) == 0 || strspn(line, " \n") == strlen(line))
 	{
 	continue;
 	}
