@@ -36,6 +36,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern int push_value;
 
 /* function prototypes */
 FILE *open_file(char *filename);
@@ -43,6 +44,7 @@ char **tokenise(char *string);
 void get_instruct(char **tokens, stack_t **stack, unsigned int line_number);
 void push_op(stack_t **stack, unsigned int line_number);
 void pall_op(stack_t **stack, unsigned int line_number);
+int is_num(char **tokens, unsigned int line_number);
 
 
 #endif /* MONTY_H */

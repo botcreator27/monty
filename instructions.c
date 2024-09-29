@@ -7,6 +7,8 @@
  * @tokens: segmented opcode
  */
 
+int push_value;
+
 void get_instruct(char **tokens, stack_t **stack, unsigned int line_number)
 {
 	int j;
@@ -20,15 +22,21 @@ void get_instruct(char **tokens, stack_t **stack, unsigned int line_number)
 	{
 	if (strcmp(instructions[j].opcode, tokens[0]) == 0)
 	{
-	instructions[j].f(stack, line_number);
 	match = 1;
+
+	if (strcmp(tokens[0], "push") == 0)
+	{
+	push_value = is_num(tokens, line_number);
+	}
+
+	instructions[j].f(stack, line_number);
 	break;
 	}
 	}
 
 	if (!match)
 	{
-	printf("L<%d>: unknown instruction %s\n", line_number, tokens[0]);
+	fprintf(stderr, "L<%d>: unknown instruction %s\n", line_number, tokens[0]);
 	exit(EXIT_FAILURE);
 	}
 }

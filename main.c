@@ -8,13 +8,14 @@
  * Return: 0 for success
  */
 
+
 int main(int argc, char **argv)
 {
 	char line[256];
 	FILE *file;
 	unsigned int line_num = 0;
 	char **tokens;
-	stack_t **stack = NULL;
+	stack_t *stack = NULL;
 	int i;
 
 	if (argc < 2)
@@ -29,7 +30,7 @@ int main(int argc, char **argv)
 	{
 	line_num++;
 	tokens = tokenise(line);
-	get_instruct(tokens, stack, line_num);
+	get_instruct(tokens, &stack, line_num);
 
 	for (i = 0; tokens[i] != NULL; i++)
 	{
