@@ -12,16 +12,22 @@ char **tokenise(char *string)
 	char **tokens = malloc(MAX_TOKENS * sizeof(char *));
 	char *arguments;
 	const char *delim = " \n";
-	int count = 0;
+	int i = 0;
 
 	arguments = strtok(string, delim);
-	while (arguments != NULL && count < MAX_TOKENS)
+	while (arguments != NULL && i < MAX_TOKENS - 1)
 	{
-	tokens[count] = malloc((strlen(arguments) + 1) * sizeof(char));
-	strcpy(tokens[count], arguments);
-	count++;
+	tokens[i] = malloc((strlen(arguments) + 1) * sizeof(char));
+	strcpy(tokens[i], arguments);
+	i++;
 	arguments = strtok(NULL, delim);
+
+	if (i == 2)
+	{
+	break;
 	}
-	tokens[count] = NULL;
+
+	}
+	tokens[i] = NULL;
 	return (tokens);
 }

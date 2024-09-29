@@ -29,6 +29,12 @@ int main(int argc, char **argv)
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 	line_num++;
+
+	if (strlen(line) == 0 ||strspn(line, " \n") == strlen(line))
+	{
+	continue;
+	}
+
 	tokens = tokenise(line);
 	get_instruct(tokens, &stack, line_num);
 
